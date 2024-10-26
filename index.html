@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lifestyle Vibes</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2E7D32;      
+            --primary-dark: #1B5E20;    
+            --primary-light: #81C784;   
+            --accent-color: #F1F8E9;       
+            --accent-dark: #558B2F;      
+            --success-color: #43A047;     
+            --text-dark: #1C2833;          
+            --text-light: #546E7A;        
+            --overlay-green: rgba(46, 125, 50, 0.85);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+        }
+
+        .navbar {
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.98), rgba(241, 248, 233, 0.98)) !important;
+            border-bottom: 3px solid var(--primary-light);
+        }
+
+        .navbar-brand {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .btn-dark {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-dark));
+            border: none;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+        }
+
+        .btn-dark:hover {
+            background: linear-gradient(45deg, var(--accent-dark), var(--primary-color));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+        }
+
+        /* Hero section */
+        .hero-section::after {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 5px 20px rgba(129, 199, 132, 0.15);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 15px 30px rgba(46, 125, 50, 0.2);
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(241, 248, 233, 0.8));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(129, 199, 132, 0.2);
+        }
+
+        .stats-card .text-success {
+            color: var(--primary-color) !important;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(45deg, white, var(--accent-color));
+            border: 1px solid rgba(46, 125, 50, 0.1);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.05);
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--primary-light);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+        }
+
+        .animate-text {
+            background: linear-gradient(45deg, 
+                var(--primary-color),
+                var(--accent-dark),
+                var(--primary-light)
+            );
+            background-size: 200% auto;
+            animation: gradientText 3s ease infinite;
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .btn-outline-dark {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-outline-dark:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        footer {
+            background: linear-gradient(45deg, var(--primary-dark), var(--primary-color)) !important;
+        }
+
+        .social-icons a {
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-light) !important;
+            transform: translateY(-3px);
+        }
+
+        /* Subscribe section */
+        .subscribe-section {
+            background-color: var(--accent-color);
+        }
+
+        .wellness-card::before,
+        .fashion-card::before {
+            background: linear-gradient(
+                rgba(46, 125, 50, 0.2),
+                rgba(27, 94, 32, 0.8)
+            );
+        }
+
+        .image-overlay {
+            background: linear-gradient(
+                transparent,
+                var(--overlay-green)
+            );
+        }
+
+        /* Additional hover effects */
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--accent-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary-color), var(--primary-light));
+            border-radius: 5px;
+            border: 2px solid var(--accent-color);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--primary-dark), var(--primary-color));
+        }
+
+        .hero-section {
+            position: relative;
+            min-height: 80vh;
+            margin-top: 76px;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            will-change: opacity;
+        }
+
+        .slide:nth-child(1) {
+            opacity: 1;
+        }
+
+        /* Animasi untuk setiap slide */
+        .slide:nth-child(1) {
+            animation: fade1 15s infinite;
+        }
+        .slide:nth-child(2) {
+            animation: fade2 15s infinite;
+        }
+        .slide:nth-child(3) {
+            animation: fade3 15s infinite;
+        }
+
+        @keyframes fade1 {
+            0% { opacity: 1; }
+            28% { opacity: 1; }
+            33% { opacity: 0; }
+            94% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fade2 {
+            0% { opacity: 0; }
+            28% { opacity: 0; }
+            33% { opacity: 1; }
+            61% { opacity: 1; }
+            66% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes fade3 {
+            0% { opacity: 0; }
+            61% { opacity: 0; }
+            66% { opacity: 1; }
+            94% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 20vh;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .card {
+            transition: transform 0.3s;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .subscribe-section {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .wellness-card {
+        background: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1520&auto=format&fit=crop') center/cover no-repeat;
+        min-height: 300px;
+        border: none;
+    }
+
+    .wellness-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+        border-radius: inherit;
+    }
+
+    .wellness-card .card-body {
+        z-index: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .wellness-card .card-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .wellness-card .card-title {
+        font-weight: 600;
+    }
+
+    .wellness-card .card-text {
+        max-width: 90%;
+    }
+
+    .fashion-card {
+        background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1470&auto=format&fit=crop') center/cover no-repeat;
+        min-height: 300px;
+        border: none;
+    }
+
+    .fashion-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+        border-radius: inherit;
+    }
+
+    .fashion-card .card-body {
+        z-index: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .fashion-card .card-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .fashion-card .card-title {
+        font-weight: 600;
+    }
+
+    .fashion-card .card-text {
+        max-width: 90%;
+    }
+
+    .lifestyle-image-main, .lifestyle-image {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .lifestyle-image-main img, .lifestyle-image img {
+        transition: transform 0.3s ease;
+    }
+
+    .lifestyle-image-main:hover img, .lifestyle-image:hover img {
+        transform: scale(1.05);
+    }
+
+    .image-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        transition: opacity 0.3s ease;
+    }
+
+    .lifestyle-image-main:hover .image-overlay,
+    .lifestyle-image:hover .image-overlay {
+        opacity: 1;
+    }
+
+    .image-overlay h3, .image-overlay h4 {
+        margin: 0;
+        font-weight: 600;
+    }
+
+    /* Timeline styling */
+    .timeline {
+        position: relative;
+        padding: 2rem 0;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 2px;
+        background: #28a745;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item {
+        margin-bottom: 3rem;
+        position: relative;
+    }
+
+    .timeline-content {
+        background: white;
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        width: 45%;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+        margin-left: auto;
+    }
+
+    /* Stats card styling */
+    .stats-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+    }
+
+    .stats-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    }
+
+    /* Testimonial styling */
+    .testimonial-card {
+        background: linear-gradient(45deg, #ffffff, #f8f9fa);
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 1rem 0;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(40, 167, 69, 0.1);
+        border-color: rgba(40, 167, 69, 0.2);
+    }
+
+    /* Animasi text */
+    .animate-text {
+        background: linear-gradient(45deg, #28a745, #20c997);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% auto;
+        animation: gradientText 3s ease infinite;
+    }
+
+    @keyframes gradientText {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .social-icons a {
+        transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        color: #28a745 !important;
+    }
+    
+    .stats-card {
+        padding: 2rem;
+        border-radius: 15px;
+        background: linear-gradient(145deg, #ffffff, var(--accent-color));
+        box-shadow: 0 10px 30px rgba(46, 125, 50, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .stats-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(46, 125, 50, 0.2);
+    }
+
+    .stats-icon {
+        color: var(--primary-color);
+        opacity: 0.8;
+    }
+
+    .timeline-content {
+        padding: 1.5rem;
+        border-radius: 15px;
+        background: linear-gradient(145deg, #ffffff, var(--accent-color));
+        box-shadow: 0 5px 15px rgba(46, 125, 50, 0.1);
+        border-left: 4px solid var(--primary-color);
+        transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+        transform: translateX(10px);
+        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+    }
+
+    .timeline-details {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(46, 125, 50, 0.1);
+    }
+
+    .badge {
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(46, 125, 50, 0.1);
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fs-3" href="#">Lifestyle Vibes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#head">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-dark rounded-pill px-4" href="#sub">Subscribe</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="head">
+        <div class="hero-slider">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1470&auto=format&fit=crop')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1470&auto=format&fit=crop')"></div>
+        </div>
+        <div class="container text-center hero-content">
+            <h1 class="display-3 fw-bold mb-4">Welcome to the Lifestyle Hub</h1>
+            <p class="lead mb-4">Explore trends, wellness, and living your best life</p>
+            <a href="#explore" class="btn btn-light btn-lg rounded-pill px-5">Explore Now</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-5" id="explore">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <article class="mb-5">
+                        <p class="lead mb-4">
+                            Temukan keharmonian dalam setiap langkah kehidupanmu. Dari perjalanan kebugaran yang menantang, 
+                            ketenangan dalam meditasi, hingga rutinitas harian yang bermakna - Kami hadir untuk menginspirasi 
+                            setiap momen berhargamu. Selamat datang di website yang tepat untuk transformasi gaya hidupmu.
+                        </p>
+                        
+                        <div class="row g-4">
+                            <!-- Gambar Utama -->
+                            <div class="col-12">
+                                <div class="position-relative lifestyle-image-main">
+                                    <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?q=80&w=1470&auto=format&fit=crop" alt="Mindfulness lifestyle" class="img-fluid rounded-4 w-100" style="height: 400px; object-fit: cover;">
+                                    <div class="image-overlay rounded-4">
+                                        <h3 class="text-white">Mindful Living</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Gambar Pendamping -->
+                            <div class="col-md-6">
+                                <div class="position-relative lifestyle-image">
+                                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?q=80&w=1374&auto=format&fit=crop" alt="Active lifestyle" class="img-fluid rounded-4 w-100" style="height: 300px; object-fit: cover;">
+                                    <div class="image-overlay rounded-4">
+                                        <h4 class="text-white">Active Life</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="position-relative lifestyle-image">
+                                    <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?q=80&w=1374&auto=format&fit=crop" alt="Reading lifestyle" class="img-fluid rounded-4 w-100" style="height: 300px; object-fit: cover;">
+                                    <div class="image-overlay rounded-4">
+                                        <h4 class="text-white">Reading & Growth</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card rounded-4 mb-4 wellness-card">
+                        <div class="card-body position-relative">
+                            <div class="card-content">
+                                <h3 class="card-title text-white">Latest in Wellness</h3>
+                                <p class="card-text text-white">Jelajahi rahasia hidup sehat yang menarik, dari teknik meditasi yang menenangkan jiwa hingga tips kebugaran yang membangkitkan semangat. Temukan versi terbaik dirimu bersama kami.</p>
+                                <a href="#" class="btn btn-light rounded-pill">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card rounded-4 fashion-card">
+                        <div class="card-body position-relative">
+                            <div class="card-content">
+                                <h3 class="card-title text-white">Fashion & Trends</h3>
+                                <p class="card-text text-white">Tampil memukau dengan sentuhan fashion berkelanjutan. Dari koleksi timeless hingga tren terkini, kami hadirkan inspirasi gaya yang mencerminkan kepribadianmu.</p>
+                                <a href="#" class="btn btn-light rounded-pill">Explore Fashion</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visi & Misi -->
+    <section class="py-5" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="display-4 fw-bold animate-text mb-4">Perjalanan Kami</h2>
+                    <p class="lead mb-4">Berawal dari sebuah mimpi sederhana di tahun 2020, kami bertumbuh menjadi komunitas wellness terpercaya yang menginspirasi ribuan jiwa untuk menjalani hidup lebih bermakna. Setiap langkah kami adalah komitmen untuk menghadirkan konten berkualitas yang menyentuh hati dan mengubah hidup.</p>
+                    
+                    <!-- Achievement Cards -->
+                    <div class="d-flex gap-3 mt-4 achievement-cards">
+                        <div class="stats-card text-center">
+                            <div class="stats-icon mb-2">
+                                <i class="fas fa-users fa-2x text-success"></i>
+                            </div>
+                            <h3 class="display-4 fw-bold text-success">10K+</h3>
+                            <p class="mb-0">Pembaca Aktif</p>
+                            <small class="text-muted">Bergabung dalam Komunitas</small>
+                        </div>
+                        <div class="stats-card text-center">
+                            <div class="stats-icon mb-2">
+                                <i class="fas fa-book-open fa-2x text-success"></i>
+                            </div>
+                            <h3 class="display-4 fw-bold text-success">500+</h3>
+                            <p class="mb-0">Artikel Inspiratif</p>
+                            <small class="text-muted">Konten Berkualitas</small>
+                        </div>
+                    </div>
+
+                    <!-- Key Values -->
+                    <div class="mt-5">
+                        <h4 class="mb-4">Nilai Utama Kami</h4>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <span class="badge bg-success-subtle text-success p-2 px-3 rounded-pill">
+                                <i class="fas fa-heart me-1"></i> Autentik
+                            </span>
+                            <span class="badge bg-success-subtle text-success p-2 px-3 rounded-pill">
+                                <i class="fas fa-leaf me-1"></i> Berkelanjutan
+                            </span>
+                            <span class="badge bg-success-subtle text-success p-2 px-3 rounded-pill">
+                                <i class="fas fa-hands-helping me-1"></i> Inspiratif
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>2020</h4>
+                                <p class="mb-2">Memulai perjalanan dengan visi yang jelas</p>
+                                <div class="timeline-details">
+                                    <small class="text-muted">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        Meluncurkan platform digital wellness pertama
+                                    </small><br>
+                                    <small class="text-muted">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        Membentuk tim konten profesional
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>2022</h4>
+                                <p class="mb-2">Mencapai 5000+ pembaca setia</p>
+                                <div class="timeline-details">
+                                    <small class="text-muted">
+                                        <i class="fas fa-trophy text-success me-2"></i>
+                                        Penghargaan Best Wellness Platform
+                                    </small><br>
+                                    <small class="text-muted">
+                                        <i class="fas fa-users text-success me-2"></i>
+                                        Komunitas aktif di 10+ kota
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>2024</h4>
+                                <p class="mb-2">Ekspansi ke platform digital</p>
+                                <div class="timeline-details">
+                                    <small class="text-muted">
+                                        <i class="fas fa-mobile-alt text-success me-2"></i>
+                                        Peluncuran aplikasi mobile
+                                    </small><br>
+                                    <small class="text-muted">
+                                        <i class="fas fa-globe text-success me-2"></i>
+                                        Jangkauan internasional
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 animate-text">Apa Kata Mereka</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1470&auto=format&fit=crop" class="rounded-circle me-3" alt="User" style="width: 50px; height: 50px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-0">Rina Wijaya</h5>
+                                <small class="text-muted">Lifestyle Enthusiast</small>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Artikel-artikel di sini sangat menginspirasi dan membantu saya mengubah gaya hidup menjadi lebih sehat."</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1374&auto=format&fit=crop" class="rounded-circle me-3" alt="User" style="width: 50px; height: 50px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-0">Budi Santoso</h5>
+                                <small class="text-muted">Health Enthusiast</small>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Konten yang disajikan sangat berkualitas dan mudah diterapkan dalam kehidupan sehari-hari."</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1374&auto=format&fit=crop" class="rounded-circle me-3" alt="User" style="width: 50px; height: 50px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-0">Maya Putri</h5>
+                                <small class="text-muted">Wellness Coach</small>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Platform yang luar biasa untuk berbagi dan belajar tentang gaya hidup sehat."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe-section" id="sub">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h2 class="mb-4">Join Our Community</h2>
+                    <p class="lead mb-5">Subscribe for the latest lifestyle updates</p>
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control form-control-lg rounded-pill" placeholder="First Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control form-control-lg rounded-pill" placeholder="Email" required>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-dark btn-lg rounded-pill px-5">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Lifestyle Vibes</h5>
+                    <p class="small">Inspirasi untuk hidup lebih baik setiap hari.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="small mb-2">© 2024 Lifestyle Vibes. All rights reserved.</p>
+                    <div class="mb-2">
+                        <a href="#" class="text-light small me-2">Privacy Policy</a>
+                        <a href="#" class="text-light small">Terms & Conditions</a>
+                    </div>
+                    <!-- Social Media Icons -->
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram fs-5"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook fs-5"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-twitter fs-5"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-youtube fs-5"></i></a>
+                        <a href="mailto:contact@example.com" class="text-light me-3"><i class="fas fa-envelope fs-5"></i></a>
+                        <a href="tel:+1234567890" class="text-light"><i class="fas fa-phone fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animasi untuk timeline saat scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.timeline-content').forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(20px)';
+                observer.observe(item);
+            });
+
+            // Animasi untuk testimonial cards
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
